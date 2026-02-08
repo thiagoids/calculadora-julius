@@ -143,8 +143,7 @@ function calcular() {
      Rendimento bruto: R$ ${moeda(rendimentoBruto)}<br>
      IOF: R$ ${moeda(iof)}<br>
      IR: R$ ${moeda(ir)}<br>
-     <strong>Rendimento líquido: R$ ${moeda(rendimentoLiquido)}</strong><br>
-     Saldo final líquido: R$ ${moeda(saldoLiquido)}`;
+     <strong>Rendimento líquido: R$ ${moeda(rendimentoLiquido)}</strong>`;
 }
 
 async function usarCdiAtual() {
