@@ -1,5 +1,7 @@
 const el = id => document.getElementById(id);
 
+
+
 function numero(v) {
   return parseFloat(v.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
 }
@@ -144,6 +146,9 @@ function calcular() {
      IOF: R$ ${moeda(iof)}<br>
      IR: R$ ${moeda(ir)}<br>
      <strong>Rendimento líquido: R$ ${moeda(rendimentoLiquido)}</strong>`;
+
+    // Foca o painel veredicto
+    el('veredicto').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 async function usarCdiAtual() {
@@ -190,3 +195,38 @@ mascaraPercentual(el('cdi'));
 el('btnCalcular').onclick = calcular;
 el('btnLimpar').onclick = limpar;
 el('btnCdi').onclick = usarCdiAtual;
+
+
+function sincronizarDesconto() {
+  const descontoEl = el('desconto');
+  const valorEl = el('valorDesconto');
+  const valorCompraEl = el('valorCompra');
+
+function atualizarPercentual() {
+  const valorCompra = numero(valorCompraEl.value);
+  const valorDesconto = numero(valorEl.value);
+  if (valorCompra > 0) {
+    const perc = (valorDesconto / valorCompra) * 100;
+    // grava apenas número, sem símbolo %
+    descontoEl.value = perc ? perc.toFixed(2) : '';
+  }
+}
+
+function atualizarValor() {
+  const valorCompra = numero(valorCompraEl.value);
+  const perc = numero(descontoEl.value);
+  if (valorCompra > 0) {
+    const val = (valorCompra * perc / 100);
+    // grava apenas número, sem R$ no value
+    valorEl.value = val ? val.toFixed(2) : '';
+  }
+}
+
+  mascaraMoeda(valorEl);
+  mascaraPercentual(descontoEl);
+
+  valorEl.addEventListener('input', atualizarPercentual);
+  descontoEl.addEventListener('input', atualizarValor);
+}
+
+sincronizarDesconto();
