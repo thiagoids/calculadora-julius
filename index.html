@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador de Compra x Rendimento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <h1>Compra à vista ou parcelada?</h1>
+
+  <label for="valorCompra">Valor da compra</label>
+  <div class="dica">Informe um valor maior que zero</div>
+  <div id="erroValor" class="erro">Campo obrigatório</div>
+  <input id="valorCompra" inputmode="numeric">
+
+  <label for="desconto">Percentual de desconto à vista</label>
+  <div class="dica">Valor entre 0 e 100</div>
+  <div id="erroDesconto" class="erro">Campo obrigatório</div>
+  <input id="desconto" inputmode="numeric">
+
+  <label for="parcelas">Quantidade de parcelas</label>
+  <div class="dica">Número inteiro maior que zero</div>
+  <div id="erroParcelas" class="erro">Campo obrigatório</div>
+  <input id="parcelas" inputmode="numeric">
+
+  <label for="cdi">CDI anual</label>
+  <div class="dica">Percentual anual do CDI</div>
+  <div id="erroCdiReq" class="erro">Campo obrigatório</div>
+  <div id="erroCdi" class="erro">
+    Não foi possível buscar o CDI automaticamente. Preencha manualmente.
+  </div>
+
+  <div class="linha-cdi">
+    <input id="cdi" inputmode="numeric">
+    <button type="button" id="btnCdi">Usar CDI atual</button>
+  </div>
+
+  <label for="percentualCdi">Percentual do CDI aplicado no CBD (aa)</label>
+  <div class="dica">Exemplo: 100 para 100% do CDI</div>
+  <input id="percentualCdi" inputmode="numeric" value="100">
+
+  <button type="button" id="btnCalcular">Calcular</button>
+  <button type="button" class="secundario" id="btnLimpar">Limpar</button>
+
+  <div class="painel" id="veredicto">Preencha os campos e clique em calcular</div>
+  <div class="painel" id="possibilidadeVista"></div>
+  <div class="painel" id="possibilidadeParcelado"></div>
+
+  <footer>
+    Esta é apenas uma simulação.<br>
+    Não constitui recomendação financeira.
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
