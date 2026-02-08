@@ -111,16 +111,17 @@ function calcular() {
   const custoParcelado = valor - saldoLiquido;
 
   el('veredicto').innerHTML =
-    `<strong>Resultado da simulação</strong><br><br>
-     Primeiro mês sem rendimento. Aplicação rende a partir do segundo mês.
-     IOF incide apenas até 30 dias. IR segue tabela regressiva.<br><br>
-     <strong>Conclusão:</strong> ` +
+    `<strong>Conclusão:</strong> ` +
     (custoParcelado < valorVista
-      ? 'Parcelar tende a ser financeiramente mais vantajoso.'
-      : 'Pagar à vista tende a ser financeiramente mais vantajoso.') +
-    `<br><br>
+      ? '<div class="conclusao-final">Parcelar tende a ser financeiramente mais vantajoso.</div>'
+      : '<div class="conclusao-final">Pagar à vista tende a ser financeiramente mais vantajoso.</div>') +
+    `<br>
      Valor à vista: R$ ${moeda(valorVista)}<br>
-     Valor parcelado efetivo: R$ ${moeda(custoParcelado)}`;
+     Valor parcelado efetivo: R$ ${moeda(custoParcelado)}
+     <br><br><strong>Resultado da simulação</strong><br><br>
+     Primeiro mês sem rendimento. Aplicação rende a partir do segundo mês.
+     IOF incide apenas até 30 dias. IR segue tabela regressiva.
+     <br><br>`;
 
   el('possibilidadeVista').innerHTML =
     `<strong>Pagamento à vista</strong><br>
